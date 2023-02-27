@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+
+  easyphpapache:
+      container_name: easyapache
+      build:
+          context: .
+          dockerfile: Dockerfile
+      image: php:8.0-apache
+      environment:
+                  MYSQL_DATABASE: ${DB_NAME}
+                  MYSQL_USER: ${DB_USERNAME}
+                  MYSQL_PASSWORD: ${DB_PASSWORD}
+                  MYSQL_HOST: easydb
+      links:
+          - easydb
+      volumes:
+            - ${PROJECT_ROOT}:/var/www/html/
+      ports:
+            - 8000:80
+      networks:
+              - easybank_network
+
+  easydb:
+        container_name: easydb
+        image: mysql
+        restart: always
+        environment:
+                  MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+                  MYSQL_DATABASE: ${DB_NAME}
+                  MYSQL_USER: ${DB_USERNAME}
+                  MYSQL_PASSWORD: ${DB_PASSWORD}
+        ports:
+            - "3306:3306"
+        volumes: 
+            - dbdataeasy:/var/lib/mysql
+        networks:
+            - easybank_network
+
+  phpmyadmin:
+        container_name: easyphpadmin
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - '8081:80'
+        restart: always
+        links:
+          - easydb
+        environment:
+            PMA_HOST: easydb
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+        depends_on:
+              - easydb
+        networks:
+              - easybank_network
+
+volumes:
+    dbdataeasy:
+
+networks:
+    easybank_network:
+        driver: bridge
