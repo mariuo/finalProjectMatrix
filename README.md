@@ -12,7 +12,7 @@
 # Clone
 $ git clone https://github.com/mariuo/finalProjectMatrix
 
-# Run docker-compose
+# Run docker-composegit s
 $ docker-compose up -d
 
 # Run scrip mysql-docker.sh to seed the database
