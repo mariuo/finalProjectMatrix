@@ -4,6 +4,7 @@ import factory.Login;
 import factory.LoginFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -37,7 +38,9 @@ public class TestCaseLogin extends TestCaseConfig {
     @BeforeMethod
     public void beforeMethod() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        ChromeOptions opt = new ChromeOptions();
+        opt.addArguments("--no-sandbox");
+        driver = new ChromeDriver(opt);
         homePageLogin = new HomePageLogin(driver);
 
     }
