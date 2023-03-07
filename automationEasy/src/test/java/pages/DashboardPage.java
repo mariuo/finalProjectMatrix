@@ -180,5 +180,8 @@ public class DashboardPage {
      * ### GET OTHERS PAGES
      * ###############################################################
      */
+    public TransferPageEasy getTransferPage(){
+        return new TransferPageEasy(driver);
+    }
 
 }
