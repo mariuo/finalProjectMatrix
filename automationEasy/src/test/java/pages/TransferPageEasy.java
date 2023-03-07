@@ -22,9 +22,27 @@ public class TransferPageEasy {
     private By errorMsg = By.xpath("//div[@class='alert alert-danger']");
 
 
+    /**
+     * Constructor
+     * @param driver
+     */
     public TransferPageEasy(WebDriver driver) {
         this.driver = driver;
     }
+
+    /**
+     * This Method use to fill all fields from Transfer Easy form.
+     * @param firstName
+     * @param lastName
+     * @param accNum
+     * @param mainAmount
+     * @param secAmount
+     * @param reason
+     * @param iCode1
+     * @param iCode2
+     * @param iCode3
+     * @param iCode4
+     */
     public void fillTransfer(String firstName, String lastName, String accNum,
                              String mainAmount, String secAmount, String reason,
                              String iCode1, String iCode2, String iCode3, String iCode4){
@@ -45,16 +63,35 @@ public class TransferPageEasy {
         driver.findElement(transBtn).click();
     }
 
+    /**
+     *
+     * @return String with totalBalance of the Transfer Easy Page.
+     */
     public String getTotalBalance (){
         String text = driver.findElement(fieldBalance).getText();
         return text.substring(14);
     }
+
+    /**
+     * Method to use to verify what message is into field with attribute title.
+     * @return String with the message in the field the name = "title".
+     */
     public String getMainAmountMsg(){
         return driver.findElement(fieldMainAmount).getAttribute("title");
     }
+
+    /**
+     * Method to use to verify what message will recieve when attribute "required" is present.
+     * @return String with the message in the field the name = "required".
+     */
     public String getMainAmoundRequiredMsg(){
         return driver.findElement(fieldMainAmount).getAttribute("required");
     }
+    /**
+     * Method to get error message when try to transfer.
+     *
+     * @return String
+     */
     public String getErrorMsg(){
         return driver.findElement(errorMsg).getText();
     }
