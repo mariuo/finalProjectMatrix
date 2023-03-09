@@ -290,14 +290,15 @@ if (isset($_POST['submit_login'])) {
 
 
         else {
-        } // end of else  error login messages
-        // echo "
-        //                  <div class='alert alert-danger' role='alert'>
-        //                   <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-        //                    <span aria-hidden='true'>&times;</span>
-        //                  </button>
-        //                  <strong> This Email </strong> account is not registered.
-        //                </div>";
+        }
+        // end of else  error login messages
+        echo "
+                         <div class='alert alert-danger' role='alert'>
+                          <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                           <span aria-hidden='true'>&times;</span>
+                         </button>
+                         <strong> This Email </strong> account is not registered.
+                       </div>";
       } // end else class connect
 
       $conn->close();

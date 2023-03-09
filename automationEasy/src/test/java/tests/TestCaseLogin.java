@@ -40,6 +40,7 @@ public class TestCaseLogin extends TestCaseConfig {
         WebDriverManager.chromedriver().setup();
         ChromeOptions opt = new ChromeOptions();
         opt.addArguments("--no-sandbox");
+        opt.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(opt);
         homePageLogin = new HomePageLogin(driver);
 
