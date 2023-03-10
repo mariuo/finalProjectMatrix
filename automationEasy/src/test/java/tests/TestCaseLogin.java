@@ -16,6 +16,9 @@ import pages.HomePageLogin;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * testNG class to the function Login.
+ */
 public class TestCaseLogin extends TestCaseConfig {
     private HomePageLogin homePageLogin;
     private DashboardPage dashboardPage;
@@ -32,7 +35,6 @@ public class TestCaseLogin extends TestCaseConfig {
         loginInvalidPin = LoginFactory.createLoginInvalidPin();
         loginInvalidPassPin = LoginFactory.createLoginInvalidPassPin();
         loginPaul = LoginFactory.createLoginPaul();
-
     }
 
     @BeforeMethod
@@ -43,7 +45,6 @@ public class TestCaseLogin extends TestCaseConfig {
         opt.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(opt);
         homePageLogin = new HomePageLogin(driver);
-
     }
 
     @AfterMethod
@@ -92,6 +93,7 @@ public class TestCaseLogin extends TestCaseConfig {
         Assert.assertTrue(result.contains(expect));
 
     }
+
     @Test(description = "Login should return error message when invalid PASSWORD and Pin." +
             "Login doit renvoyer un message d'erreur lorsque PASSWORD et PIN invalide.")
     public void tcl04() {
@@ -121,6 +123,7 @@ public class TestCaseLogin extends TestCaseConfig {
         Assert.assertTrue(resultMsg);
 
     }
+
     @Test(description = "Logout should return LoginPage when Logout." +
             "Logout doit renvoyer LoginPage lorsque Logout.")
     public void tcl06() {
@@ -139,6 +142,7 @@ public class TestCaseLogin extends TestCaseConfig {
         Assert.assertTrue(result.contains(expect));
 
     }
+
     @Test(description = "Logout should do nothing when Cancel logout." +
             "Logout doit faire rien lorsque Annulé le logout.")
     public void tcl07() {

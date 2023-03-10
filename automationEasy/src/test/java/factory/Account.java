@@ -1,5 +1,8 @@
 package factory;
 
+/**
+ * Class Account
+ */
 public class Account {
     private String email;
     private String firstName;
@@ -8,7 +11,8 @@ public class Account {
     private String iban;
     private String totalBalance;
 
-    public Account(){}
+    public Account() {
+    }
 
     public Account(String email, String firstName, String lastName, String accNum, String iban, String totalBalance) {
         this.email = email;

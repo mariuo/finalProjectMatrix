@@ -1,4 +1,4 @@
-package tests;
+package tests.undo;
 
 import common.UtilAlertMsg;
 import factory.Account;
@@ -15,14 +15,17 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.DashboardPage;
 import pages.HomePageLogin;
-import pages.TransferPageEasy;
+import pages.TransferPageAny;
+import tests.TestCaseConfig;
 
-
-public class TestCaseTranferUndo extends TestCaseConfig {
+/**
+ * testNG class to the function Transfer "ANY BANK".
+ */
+public class TestCaseTranferAnyUndo extends TestCaseConfig {
 
     private HomePageLogin homePageLogin;
     private DashboardPage dashboardPage;
-    private TransferPageEasy transferPageEasy;
+    private TransferPageAny transferPageAny;
     private Login loginPaul;
     private Login loginJohn;
     private Login loginGeorge;
@@ -53,7 +56,6 @@ public class TestCaseTranferUndo extends TestCaseConfig {
         opt.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(opt);
         homePageLogin = new HomePageLogin(driver);
-
     }
 
     @AfterMethod
@@ -63,11 +65,12 @@ public class TestCaseTranferUndo extends TestCaseConfig {
 
     @Test(description = "Transfer should return success message when VALID data." +
             "Transfer doit renvoyer Main Application Page lorsque VALIDE donnee apres inscription.")
-    public void tce03() {
+    public void tca03() {
         String expectMsgAlert = "This transfer was held successfully.";
         String iCode = "";
-        long amountSubtract = 1000;
-        String mainAmount = "1000";
+        long tax = 3;
+        long amountSubtract = 100;
+        String mainAmount = "100";
         String secAmount = "00";
         String reason = "Any reason";
 
@@ -75,61 +78,60 @@ public class TestCaseTranferUndo extends TestCaseConfig {
         homePageLogin.fillFields(loginRingo);
         dashboardPage = homePageLogin.getDashboardPage();
 
-        // #### Get the balance from page, Casting to Long and subtract 1000.
+        // #### Get the balance from page, Casting to Long and subtract 100.
         String beforeBalance = dashboardPage.getTotalBalance();
-        long expectBalance = Long.parseLong(beforeBalance) - amountSubtract;
+        long expectBalance = Long.parseLong(beforeBalance) - amountSubtract - tax;
 
-        iCode = dashboardPage.transferBank("easy");
+        iCode = dashboardPage.transferBank("any");
 
-        transferPageEasy = dashboardPage.getTransferPage();
-        transferPageEasy.fillTransfer(accountPaul.getFirstName(), accountPaul.getLastName(),
-                accountPaul.getAccNum(), mainAmount, secAmount, reason,
+        transferPageAny = dashboardPage.getTransferPageAny();
+        transferPageAny.fillTransfer(accountPaul, mainAmount, secAmount, reason,
                 "" + iCode.charAt(0), "" + iCode.charAt(1), "" + iCode.charAt(2), "" + iCode.charAt(3));
 
         String resultMsgAlert = UtilAlertMsg.getAlertText(driver);
 
         // #### Get the balance from page after transfer, and casting to long.
-        String afterBalance = transferPageEasy.getTotalBalance();
+        String afterBalance = transferPageAny.getTotalBalance();
         long resultBalance = Long.parseLong(afterBalance);
 
 
         Assert.assertEquals(resultMsgAlert, expectMsgAlert);
         Assert.assertEquals(resultBalance, expectBalance);
     }
-
     @Test(description = "Transfer should return success message when valid day limit transfer." +
             "Transfer doit renvoyer message de succes lorsque transfer limite quotidien valide.")
-    public void tce04() {
+    public void tca04() {
         String expectMsgAlert = "This transfer was held successfully.";
         String iCode = "";
-        double amountSubtract = 20000;
-        String mainAmount = "20000";
+        long tax = 3;
+        double amountSubtract = 2000;
+        String mainAmount = "2000";
         String secAmount = "00";
         String reason = "Guitar payment";
 
         homePageLogin.openPage(urlPage);
-        homePageLogin.fillFields(loginJohn);
+        homePageLogin.fillFields(loginRingo);
         dashboardPage = homePageLogin.getDashboardPage();
 
         // #### Get the balance from page, Casting to Long and subtract 20000.
         String beforeBalance = dashboardPage.getTotalBalance();
-        double expectBalance = Double.parseDouble(beforeBalance) - amountSubtract;
+        double expectBalance = Double.parseDouble(beforeBalance) - amountSubtract - tax;
 
-        iCode = dashboardPage.transferBank("easy");
+        iCode = dashboardPage.transferBank("any");
 
-        transferPageEasy = dashboardPage.getTransferPage();
-        transferPageEasy.fillTransfer(accountGeorge.getFirstName(), accountGeorge.getLastName(),
-                accountGeorge.getAccNum(), mainAmount, secAmount, reason,
+        transferPageAny = dashboardPage.getTransferPageAny();
+        transferPageAny.fillTransfer(accountJohn, mainAmount, secAmount, reason,
                 "" + iCode.charAt(0), "" + iCode.charAt(1), "" + iCode.charAt(2), "" + iCode.charAt(3));
 
         String resultMsgAlert = UtilAlertMsg.getAlertText(driver);
 
         // #### Get the balance from page after transfer, and casting to long.
-        String afterBalance = transferPageEasy.getTotalBalance();
+        String afterBalance = transferPageAny.getTotalBalance();
         double resultBalance = Long.parseLong(afterBalance);
 
 
         Assert.assertEquals(resultMsgAlert, expectMsgAlert);
         Assert.assertEquals(resultBalance, expectBalance);
     }
+
 }

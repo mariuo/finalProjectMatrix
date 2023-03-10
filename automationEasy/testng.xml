@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="/home/mario/workspace-temp/finalProjectMatrix/automationEasy/src/test/java/tests/TestCaseLogin.java">
+        <classes>
+            <class name="tests.TestCaseLogin">
+                <methods>
+                    <include name="tcl01"/>
+                    <include name="tcl02"/>
+                    <include name="tcl03"/>
+                    <include name="tcl04"/>
+                    <include name="tcl05"/>
+                    <include name="tcl06"/>
+                    <include name="tcl07"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="/home/mario/workspace-temp/finalProjectMatrix/automationEasy/src/test/java/tests/TestCaseTranfer.java">
+        <classes>
+            <class name="tests.TestCaseTranfer">
+                <methods>
+                    <include name="tce01"/>
+                    <include name="tce02"/>
+                    <include name="tce03"/>
+                    <include name="tce04"/>
+                    <include name="tce05"/>
+                    <include name="tce06"/>
+                    <include name="tce07"/>
+                    <include name="tce08"/>
+                    <include name="tce09"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="/home/mario/workspace-temp/finalProjectMatrix/automationEasy/src/test/java/tests/TestCaseTranferAny.java">
+        <classes>
+            <class name="tests.TestCaseTranferAny">
+                <methods>
+                    <include name="tca01"/>
+                    <include name="tca02"/>
+                    <include name="tca03"/>
+                    <include name="tca04"/>
+                    <include name="tca05"/>
+                    <include name="tca06"/>
+                    <include name="tca07"/>
+                    <include name="tca08"/>
+                    <include name="tca09"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="/home/mario/workspace-temp/finalProjectMatrix/automationEasy/src/test/java/tests/TestCaseRegister.java">
+        <classes>
+            <class name="tests.TestCaseRegister">
+                <methods>
+                    <include name="tcr01"/>
+                    <include name="tcr02"/>
+                    <include name="tcr03"/>
+                    <include name="tcr04"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="/home/mario/workspace-temp/finalProjectMatrix/automationEasy/src/test/java/tests/TestCaseTransactions.java">
+        <classes>
+            <class name="tests.TestCaseTransactions">
+                <methods>
+                    <include name="tct01"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -8,6 +8,9 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This Class is Model from Login Page(initial)...
+ */
 public class HomePageLogin {
     protected WebDriver driver;
 
@@ -16,14 +19,20 @@ public class HomePageLogin {
     private By fieldPin = By.xpath("//input[@name=\"pin\"]");
     private By submitBtn = By.xpath("/html/body/div[1]/div/div/div[2]/form/div[5]/span/button");
     private By errorMsg = By.xpath("//div[@class='alert alert-danger']");
+    private By signInLink = By.xpath("/html/body/div[1]/div/div/div[2]/form/div[6]/p/a");
 
+    /**
+     * Constructor.
+     *
+     * @param driver
+     */
     public HomePageLogin(WebDriver driver) {
         this.driver = driver;
     }
 
     /**
      * Method to open the page and MAXIMISE the window.
-     * 
+     *
      * @param urlPage
      */
     public void openPage(String urlPage) {
@@ -33,7 +42,7 @@ public class HomePageLogin {
 
     /**
      * Method to get error message when try to login.
-     * 
+     *
      * @return
      */
     public String getErrorMsg() {
@@ -42,7 +51,7 @@ public class HomePageLogin {
 
     /**
      * This method verify list of String that occurs when multiple errors messages.
-     * 
+     *
      * @param listExpect
      * @return TRUE if the list is correct.
      * @return FALSE if the list is not correct.
@@ -62,7 +71,7 @@ public class HomePageLogin {
 
     /**
      * This Method use to fill all fields from Login form.
-     * 
+     *
      * @param login : Object type Login.
      */
     public void fillFields(Login login) {
@@ -74,12 +83,21 @@ public class HomePageLogin {
 
     /**
      * Method to get object of type DashboardPage.
-     * 
+     *
      * @return DashboardPage
      */
-
     public DashboardPage getDashboardPage() {
         return new DashboardPage(driver);
+    }
+
+    /**
+     * Method to get object of type SignInStep1Page.
+     *
+     * @return SignInStep1Page
+     */
+    public SignInStep1Page gotoSignin() {
+        driver.findElement(signInLink).click();
+        return new SignInStep1Page(driver);
     }
 
 }

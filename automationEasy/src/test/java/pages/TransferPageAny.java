@@ -5,15 +5,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
- * This Class is Model from Transfer "EASY BANK" Page...
+ * This Class is Model from Transfer "ANY BANK" Page...
  */
-public class TransferPageEasy {
+public class TransferPageAny {
 
     protected WebDriver driver;
 
     private By fieldFirstName = By.xpath("//input[@name=\"firstname\"]");
     private By fieldLastName = By.xpath("//input[@name=\"lastname\"]");
-    private By fieldAccNum = By.xpath("//input[@name=\"account_no\"]");
+    private By fieldIBAN = By.xpath("//input[@name=\"IBAN\"]");
     private By fieldMainAmount = By.xpath("//input[@name=\"main_amount\"]");
     private By fieldSecAmount = By.xpath("//input[@name=\"secondary_amount\"]");
     private By fieldReason = By.xpath("//textarea[@name='reason']");
@@ -21,19 +21,20 @@ public class TransferPageEasy {
     private By fieldCode2 = By.xpath("//input[@name=\"i_code2\"]");
     private By fieldCode3 = By.xpath("//input[@name=\"i_code3\"]");
     private By fieldCode4 = By.xpath("//input[@name=\"i_code4\"]");
-    private By transBtn = By.xpath("//button[@name='transfer_easy_bank']");
+    private By transBtn = By.xpath("//button[@name='transfer_anyone_bank']");
     private By fieldBalance = By.xpath("/html/body/div[1]/div[1]/div[2]/div/div/ol/li");
     private By errorMsg = By.xpath("//div[@class='alert alert-danger']");
 
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param driver
      */
-    public TransferPageEasy(WebDriver driver) {
+    public TransferPageAny(WebDriver driver) {
         this.driver = driver;
     }
+
 
     /**
      * This Method use to fill all fields from Transfer Easy form.
@@ -51,7 +52,7 @@ public class TransferPageEasy {
                              String iCode1, String iCode2, String iCode3, String iCode4) {
         driver.findElement(fieldFirstName).sendKeys(account.getFirstName());
         driver.findElement(fieldLastName).sendKeys(account.getLastName());
-        driver.findElement(fieldAccNum).sendKeys(account.getAccNum());
+        driver.findElement(fieldIBAN).sendKeys(account.getIban());
         if (mainAmount == null) {
             driver.findElement(fieldMainAmount).clear();
         } else {
@@ -67,7 +68,7 @@ public class TransferPageEasy {
     }
 
     /**
-     * @return String with totalBalance of the Transfer Easy Page.
+     * @return String with totalBalance of the Transfer Any Page.
      */
     public String getTotalBalance() {
         String text = driver.findElement(fieldBalance).getText();

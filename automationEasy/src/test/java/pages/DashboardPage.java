@@ -8,6 +8,9 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This Class is Model from Principal Page of Application.
+ */
 public class DashboardPage {
     protected WebDriver driver;
 
@@ -22,7 +25,14 @@ public class DashboardPage {
     private By btnLogout = By.xpath("/html/body/div[1]/header/div/div[2]/div/a/img");
     private By submitLogout = By.xpath("/html/body/div[1]/header/div/div[2]/div/div/div/div/div[2]/div/form/button[2]");
     private By cancelLogout = By.xpath("/html/body/div[1]/header/div/div[2]/div/div/div/div/div[2]/div/form/button[1]");
+    private By leftMenuAccount = By.xpath("/html/body/aside/nav/div[2]/ul/li[3]/a");
 
+
+    /**
+     * Constructor.
+     *
+     * @param driver
+     */
     public DashboardPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -32,10 +42,11 @@ public class DashboardPage {
      * ### VERIFY and GET ELEMENTS
      * ###############################################################
      */
+
     /**
      * This method verify the elements of the center page.
      * Compare two list of Strings are the same, without order.
-     * 
+     *
      * @param expectList : The List of Strings.
      * @return True if the list is the same.
      * @return False if the list is not the same.
@@ -54,7 +65,7 @@ public class DashboardPage {
 
     /**
      * This method verify if success message contains the string passed.
-     * 
+     *
      * @param text : String you want to compare.
      * @return boolean TRUE If the string is the same.
      * @return boolean FALSE If the string is not the same.
@@ -67,12 +78,12 @@ public class DashboardPage {
 
     /**
      * This method use to navigate specific Bank that you want and return I_CODE.
-     * By default have two links.
-     * 
+     * By defaut have two links.
+     *
      * @param bank : The param is a String: easy => Easy Bank
      * @param bank : The param is a String any => Anyone Bank
      * @return iCode : String I_CODE from the alert message when click Easy Bank or
-     *         Anyone Bank submenu.
+     * Anyone Bank submenu.
      * @throws IllegalArgumentException if you dont write correct the name of the
      *                                  bank.
      */
@@ -104,12 +115,13 @@ public class DashboardPage {
     }
 
     /*
-        
+
      */
+
     /**
      * This method use to navigate specific left submenu.
-     * By default have two links.
-     * 
+     * By defaut have two links.
+     *
      * @param trans : The param is a String: deposits => Deposits
      * @param trans : The param is a String: withdrawls => Withdrawls
      * @throws IllegalArgumentException if you dont write correct the string.
@@ -137,7 +149,6 @@ public class DashboardPage {
     }
 
     /**
-     * 
      * @return String with totalBalance of the Dashboard Page.
      */
     public String getTotalBalance() {
@@ -168,7 +179,7 @@ public class DashboardPage {
 
     /**
      * Method to get the Current URL.
-     * 
+     *
      * @return
      */
     public String getUrl() {
@@ -183,10 +194,39 @@ public class DashboardPage {
 
     /**
      * Method return the object from the TransferPageEasy.
+     *
      * @return
      */
-    public TransferPageEasy getTransferPage(){
+    public TransferPageEasy getTransferPage() {
         return new TransferPageEasy(driver);
+    }
+
+    /**
+     * Method return the object from the TransferPageAny.
+     *
+     * @return
+     */
+    public TransferPageAny getTransferPageAny() {
+        return new TransferPageAny(driver);
+    }
+
+    /**
+     * Method return the object from the AccountDetailsPage.
+     *
+     * @return
+     */
+    public AccountDetailsPage gotoAccount() {
+        driver.findElement(leftMenuAccount).click();
+        return new AccountDetailsPage(driver);
+    }
+
+    /**
+     * Method return the object from the TransactionPage.
+     *
+     * @return
+     */
+    public TransactionPage getTransactionPage() {
+        return new TransactionPage(driver);
     }
 
 }

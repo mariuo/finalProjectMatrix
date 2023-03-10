@@ -11,7 +11,7 @@ public class UtilAlertMsg {
 
     /**
      * This method return a String from alert box.
-     * 
+     *
      * @param driver : The webdriver.
      * @return String with the text Alert mensage.
      */
@@ -29,7 +29,7 @@ public class UtilAlertMsg {
 
     /**
      * This method return String with 4 digital from the other text passed.
-     * 
+     *
      * @param textAlert : String with the text.
      * @return String 4 digital.
      */
