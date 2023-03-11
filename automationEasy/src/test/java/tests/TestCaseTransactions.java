@@ -25,13 +25,15 @@ public class TestCaseTransactions extends TestCaseConfig {
     private HomePageLogin homePageLogin;
     private DashboardPage dashboardPage;
     private TransactionPage transactionPage;
+    private Account accountPaul;
     private Account accountRingo;
     private Login loginPaul;
 
     @BeforeTest
     public void beforeClass() {
         loginPaul = LoginFactory.createLoginPaul();
-        accountRingo = AccountFactory.createAccountRingo();
+        accountPaul = AccountFactory.createAccountPaul();
+        accountRingo = AccountFactory.createAccountPaul();
     }
 
     @BeforeMethod
@@ -44,7 +46,7 @@ public class TestCaseTransactions extends TestCaseConfig {
         homePageLogin = new HomePageLogin(driver);
     }
 
-    @AfterMethod
+//    @AfterMethod
     public void afterMethod() {
         driver.close();
     }
@@ -52,8 +54,8 @@ public class TestCaseTransactions extends TestCaseConfig {
 
     @Test(description = "Deposits should return all transactions by All bank." +
             "Deposits doit renvoyer tous les transactions de toutes banque.")
-    public void tct01() {
-        String result;
+    public void tct01() throws InterruptedException {
+        boolean result;
         String expect = accountRingo.getLastName() + " " + accountRingo.getFirstName();
 
         homePageLogin.openPage(urlPage);
@@ -65,9 +67,10 @@ public class TestCaseTransactions extends TestCaseConfig {
         transactionPage = dashboardPage.getTransactionPage();
         transactionPage.selectTransaction(" All Banks ");
 
-        result = transactionPage.getOneTransaction();
+        Thread.sleep(200);
+        result = transactionPage.getOneTransaction(expect);
 
-        Assert.assertTrue(result.contains(expect));
+        Assert.assertTrue(result);
 
 
     }

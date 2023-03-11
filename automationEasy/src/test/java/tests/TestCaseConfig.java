@@ -11,8 +11,8 @@ import java.net.URISyntaxException;
  */
 public abstract class TestCaseConfig {
     protected WebDriver driver;
-    //    static String urlPage = "https://easyphpprojet.000webhostapp.com/";
-    protected static String urlPage = "http://127.0.0.1:8000";
+        protected static String urlPage = "https://easyphpprojet.000webhostapp.com/";
+//    protected static String urlPage = "http://127.0.0.1:8000";
 
 
     String fileName = "mickjagger.png";

@@ -2,7 +2,11 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This Class is Model from Transcations Page...
@@ -10,7 +14,8 @@ import org.openqa.selenium.support.ui.Select;
 public class TransactionPage {
     protected WebDriver driver;
     private By fieldSelect = By.xpath("//select [@name='transactions']");
-    private By fieldTable = By.xpath("/html/body/div[1]/div[2]/div[2]/div/div[2]/table[1]/tbody/tr");
+    private By fieldFullname = By.xpath("/html/body/div[1]/div[1]/div[1]/div/div/h1");
+    private By listTables = By.xpath("//tr[@id='detail']//td");
 
     /**
      * Constructor.
@@ -32,13 +37,19 @@ public class TransactionPage {
     }
 
     /**
-     * Method to get one line of the transcation.
+     * Method to get one line of the transcation and validate has a String passed.
      *
      * @return
      */
-    public String getOneTransaction() {
-        String line = driver.findElement(fieldTable).getText();
-        return line;
-    }
+    public boolean getOneTransaction(String expect) {
+        List<WebElement> elements = driver.findElements(listTables);
+        List<String> listEle = new ArrayList<>();
 
+        for (WebElement tr : elements) {
+            listEle.add(tr.getText());
+        }
+        boolean result = listEle.contains(expect);
+
+        return result;
+    }
 }
