@@ -46,7 +46,7 @@ public class TestCaseTransactions extends TestCaseConfig {
         homePageLogin = new HomePageLogin(driver);
     }
 
-//    @AfterMethod
+    @AfterMethod
     public void afterMethod() {
         driver.close();
     }
@@ -71,8 +71,6 @@ public class TestCaseTransactions extends TestCaseConfig {
         result = transactionPage.getOneTransaction(expect);
 
         Assert.assertTrue(result);
-
-
     }
 
 
