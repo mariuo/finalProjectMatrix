@@ -8,6 +8,7 @@
                 <methods>
                     <include name="tce03"/>
                     <include name="tce05"/>
+                    <include name="tce08"/>
                 </methods>
             </class>
         </classes>
