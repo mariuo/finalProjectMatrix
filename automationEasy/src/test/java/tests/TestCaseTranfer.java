@@ -125,6 +125,8 @@ public class TestCaseTranfer extends TestCaseConfig {
         String secAmount = "00";
         String reason = "Any reason";
 
+
+
         homePageLogin.openPage(urlPage);
         homePageLogin.fillFields(loginPaul);
         dashboardPage = homePageLogin.getDashboardPage();
