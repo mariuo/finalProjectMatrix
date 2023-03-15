@@ -34,7 +34,6 @@
             <artifactId>selenium-firefox-driver</artifactId>
             <version>${seleniumVersion}</version>
         </dependency>
-
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>

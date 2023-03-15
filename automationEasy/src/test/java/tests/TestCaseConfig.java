@@ -11,7 +11,11 @@ import java.net.URISyntaxException;
  */
 public abstract class TestCaseConfig {
     protected WebDriver driver;
-        protected static String urlPage = "https://easyphpprojet.000webhostapp.com/";
+
+    /**
+     * Var of config LOCAL or PROD.
+     */
+    protected static String urlPage = "https://easyphpprojet.000webhostapp.com/";
 //    protected static String urlPage = "http://127.0.0.1:8000";
 
 
