@@ -27,7 +27,7 @@ class DATABASE_CONNECT
 
   public function __construct()
   {
-    // LOCAL
+    // ##### LOCAL
 
     // $this->connect[0] = "localhost";
     // $this->connect[1] = "easybank";
@@ -35,18 +35,14 @@ class DATABASE_CONNECT
     // $this->connect[3] = "easybank";
 
 
-    // PROD
-
-
-    // $this->connect[0] = "localhost";
-    // $this->connect[1] = "498159";
-    // $this->connect[2] = "Mcamelo22";
-    // $this->connect[3] = "498159";
+    // ##### PROD
 
     // $this->connect[0] = "easydb";
     // $this->connect[1] = "id20315379_easyuser";
     // $this->connect[2] = "I+m8*yu^yLUHiZ*i";
     // $this->connect[3] = "id20315379_easydb";
+
+    // #### DOCKER
 
     $this->connect[0] = getenv('MYSQL_HOST');
     $this->connect[1] = getenv('MYSQL_USER');
