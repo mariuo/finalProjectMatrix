@@ -15,8 +15,8 @@ public abstract class TestCaseConfig {
     /**
      * Var of config LOCAL or PROD.
      */
-    protected static String urlPage = "https://easyphpprojet.000webhostapp.com/";
-//    protected static String urlPage = "http://127.0.0.1:8000";
+//    protected static String urlPage = "https://easyphpprojet.000webhostapp.com/";
+    protected static String urlPage = "http://127.0.0.1:8000";
 
 
     String fileName = "mickjagger.png";
